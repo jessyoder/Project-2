@@ -45,9 +45,13 @@ function createMarkers(data) {
   for (var i = 0; i < breweries.length; i++) {
     var brewery = breweries[i];
 
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     // For each station, create a marker and bind a popup with the station's name
     var breweryMarker = L.marker([brewery.latitude, brewery.longitude])
-      .bindPopup("<h2>" + brewery.name + "</h2><hr><h3>" + brewery.street + ", " + brewery.city + "</h3><h3> " + brewery.brewery_type +  "</h3>");
+      .bindPopup("<h2>" + brewery.name + "</h2><hr><h3>" + brewery.street + ", " + brewery.city + " " + brewery.state + "</h3><h3> " + capitalize(brewery.brewery_type) +  " Brewery</h3>");
 
     // Add the marker to the bikeMarkers array
     console.log(breweryMarkers)

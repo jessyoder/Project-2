@@ -45,8 +45,8 @@
         </nav>
 
         <division>
-            <div class="container-fluid pl-5 pr-5">
-                <div class="row mt-3 mb-3">
+            <div class="container-fluid pl-6 pr-5">
+                <div class="row ml-3 mt-3 mb-3">
                     <div class="col-md-12">
                         <h5>National Beer Production and Consumption Trends</h5>
                         <p>Overview of national tends.</p>
@@ -55,28 +55,42 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-9">
-                        <h6>INSERT NATIONAL PRODUCTION CHART HERE</h6>
+                <div class="row ml-3">
+                    <div id="my_dataviz1" class="col-md-8">
+                        <h6>National Beer Production Trends -- Total Barrels Produced</h6>
                     </div>
-                    <div class="col-md-3">
-                        <h6>INSERT COMMENTARY HERE</h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-9">
-                        <h6>INSERT CRAFT BREWERY PRODUCTION CHART HERE</h6>
-                    </div>
-                    <div class="col-md-3">
-                        <h6>INSERT COMMENTARY HERE</h6>
+                    <div class="col-md-4">
+                        <h6>National Beer Production -- All Breweries</h6>
+                        <p>Over the last 10 years, US beer production has declined from 195MM bbls annually to 179MM
+                            bbls annually as consumer tastes have shifted, primarily to wines and spirits.</p>
+                        <p>The large, national breweries, definied as producing 6MM or more barrels annually, have
+                            accounted for all of this decline and have lost additional market share to smaller craft
+                            breweries producing under 6MM bbls.</p>
+
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-9">
-                        <h6>INSERT CRAFT BREWERY NUMBERS CHART HERE</h6>
+                <div class="row ml-3">
+                    <div id="my_dataviz2" class="col-md-8">
+                        <h6>Growth in Craft Breweeries -- Craft Barrels Produced by Year</h6>
                     </div>
-                    <div class="col-md-3">
-                        <h6>INSERT COMMENTARY HERE</h6>
+                    <div class="col-md-4">
+                        <h6>Craft Beer Production</h6>
+                        <p>While nationral breweries have seedn production decline by nearly 35MM bbls, smaller craft
+                            breweries have Nearly all of the declining production can be attributed to the declining
+                            volumes from larger
+                            breweries have seen production rise 19MM bbls in the last 10 years.</p>
+                        <p>While the grwoth in craft brewery production has tapered off, this segment is still seeing
+                            attractive growth of roughly 3.5% per year recently vs. declining total produciton of
+                            roughly 1.5% per year.</p>
+                    </div>
+                </div>
+                <div class="row ml-3">
+                    <div id="my_dataviz3" class="col-md-8">
+                        <h6>Growth in Craft Breweries -- Total Number by Type of Craft Breweries</h6>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>Craft Brewery Segments</h6>
+                        <p>Define craft segments - Regional, Micro Brewery, Taproom, Brewpup</p>
                     </div>
                 </div>
 
@@ -94,8 +108,14 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v4.js"></script>
 
-        <!-- ADD REFERENCE TO D3 AND CLOUDFARE -->
-        <!-- ADD JAVASCRIPT SOURCE FILE-->
+        <!-- Chart source file -->
+        <script type="text/javascript" src="Home_charts.js"></script>
+
+
+
+
 
     </body>

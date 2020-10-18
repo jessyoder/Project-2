@@ -11,7 +11,7 @@ var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}
 // Initialize all of the LayerGroups
 var layers = {
     micro: new L.LayerGroup(),
-    brewpub: new L.LayerGroup(),
+    pub: new L.LayerGroup(),
     large: new L.LayerGroup(),
     regional: new L.LayerGroup(),
     contract: new L.LayerGroup()
@@ -23,7 +23,7 @@ var myMap = L.map("map-id", {
     zoom: 8,
     layers: [
         layers.micro,
-        layers.brewpub,
+        layers.pub,
         layers.large,
         layers.regional,
         layers.contract
@@ -35,7 +35,7 @@ streetmap.addTo(myMap);
 
 var overlays = {
     "Micro Breweries": layers.micro,
-    "Brew Pubs": layers.brewpub,
+    "Brew Pubs": layers.pub,
     "Large Breweries": layers.large,
     "Regional Breweries": layers.regional,
     "Contract Breweries": layers.contract
@@ -67,7 +67,7 @@ var icons = {
       markerColor: "purple",
       shape: "circle"
     }),
-    brewpub: L.ExtraMarkers.icon({
+    pub: L.ExtraMarkers.icon({
       icon: "ion-minus-circled",
       iconColor: "white",
       markerColor: "red",
@@ -99,7 +99,7 @@ d3.json("static/data/nc_breweries.json", function(brewInfo) {
 
     var breweryCount = {
         micro: 0,
-        brewpub: 0,
+        pub: 0,
         large: 0,
         regional: 0,
         contract: 0
@@ -113,28 +113,28 @@ d3.json("static/data/nc_breweries.json", function(brewInfo) {
 
         // Create a new station object with properties of both station objects
         var brewery = Object.assign({}, breweryInfo[i]);
-        // If a station is listed but not installed, it's coming soon
+        // If a brewery has a brewery_type of micro, its status is micro
         if (brewery.brewery_type == "micro") {
             brewStatusCode = "micro";
         }
-        // If a station has no bikes available, it's empty
-        else if (brewery.brewery_type == "contract") {
-            brewStatusCode = "contract";
+        // If a brewery has a brewery_type of pub, its status is pub
+        else if (brewery.brewery_type == "pub") {
+            brewStatusCode = "pub";
         }
-        // If a station is installed but isn't renting, it's out of order
+        // If a brewery has a brewery_type of large, its status is large
         else if (brewery.brewery_type == "large") {
             brewStatusCode = "large";
         }
-        // If a station has less than 5 bikes, it's status is low
+        // If a brewery has a brewery_type of regional, its status is regional
         else if (brewery.brewery_type == "regional") {
             brewStatusCode = "regional";
         }
-        // Otherwise the station is normal
+        // Otherwise the station is contract
         else {
-            brewStatusCode = "brewpub";
+            brewStatusCode = "contract";
         }
 
-        // Update the station count
+        // Update the brewery count
         breweryCount[brewStatusCode]++;
         
         // Create a new marker with the appropriate icon and coordinates
@@ -151,7 +151,7 @@ d3.json("static/data/nc_breweries.json", function(brewInfo) {
 
         // Bind a popup to the marker that will  display on click. This will be rendered as HTML
         newMarker.bindPopup("<h3>" + brewery.name + "</h3><hr><h4>" + brewery.street +", " + brewery.city + "</h4><h4>" + capitalize(brewery.brewery_type) + " Brewery</h4>");
-        }
+    }
     
     // Call the updateLegend function, which will... update the legend!
     updateLegend(breweryCount);
@@ -160,10 +160,10 @@ d3.json("static/data/nc_breweries.json", function(brewInfo) {
     function updateLegend(time, stationCount) {
         document.querySelector(".legend").innerHTML = [
         "<p class='micro'>Micro Breweries: " + breweryCount.micro + "</p>",
-        "<p class='brewpub'>Pub Breweries: " + breweryCount.brewpub + "</p>",
+        "<p class='pub'>Pub Breweries: " + breweryCount.pub + "</p>",
         "<p class='large'>Large Breweries: " + breweryCount.large + "</p>",
         "<p class='regional'>Regional Breweries: " + breweryCount.regional + "</p>",
         "<p class='contract'>Contract Breweries: " + breweryCount.contract + "</p>"
         ].join("");
     }
-})
+});

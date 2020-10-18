@@ -1,17 +1,17 @@
-import numpy as np
-
-import sqlalchemy
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
-
+# Import libraries
 from flask import Flask, render_template
+from flask_pymongo import pymongo
 
-from flask_pymongo import PyMongo
+# Create connection variable and pass to Pymongo
+conn = 'mongodb://localhost:27017'
+client = pymongo.MongoClient(conn)
 
-# Use flask_pymongo to set up mongo connection
-app.config["MONGO_URI"] = "mongodb://localhost:27017/craft_brewery_scrape"
-mongo = PyMongo(app)
+# Connect to database; declare "USBeer_db" database in Mongo and the "breweries" collection
+db = client.USbeer_db
+breweries = db.breweries_db
+
+# app.config["MONGO_URI"] = "mongodb://localhost:27017/craft_brewery_scrape"
+# mongo = PyMongo(app)
 
 
 #################################################
@@ -27,9 +27,8 @@ mongo = PyMongo(app)
 # # Save reference to the table
 # brewers = Base.classes.brewers
 
-#################################################
+
 # Flask Setup
-#################################################
 app = Flask(__name__)
 
 
@@ -39,8 +38,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    Breweries = mongo.db.breweries_db.find()
-    return render_template("index.html", Breweries=Breweries)
+    locations = db.breweries_db.find()
+    return render_template("index.html", locations=locations)
 
 
 @app.route("/state")
@@ -48,9 +47,9 @@ def state():
     return render_template("state.html")
 
 
-@app.route("/find")
+@app.route("/nc_breweries")
 def find():
-    return render_template("find.html")
+    return render_template("nc_breweries.html")
 
 
 if __name__ == '__main__':

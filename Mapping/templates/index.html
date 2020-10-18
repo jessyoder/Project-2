@@ -94,6 +94,18 @@
                     </div>
                 </div>
 
+                <div id="map-id"></div>
+
+                <div class="row ml-12">
+                    <ul style="list-style: none;">
+                        {% for location in locations %}
+                        <li>{{ location.name }}; {{ location.brewery_type }}; {{ location.state }};
+                            {{ location.latitude }}; {{ location.longitude }}</li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
             </div>
 
         </division>
@@ -112,6 +124,7 @@
         <script src="https://d3js.org/d3.v4.js"></script>
 
         <!-- Chart source file -->
+        <!-- <script type="text/javascript" src="../../Mapping/static/js/logic1.js"></script> -->
         <script type="text/javascript" src="Home_charts.js"></script>
 
 

@@ -18,22 +18,22 @@ body,
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-.legend .low {
-  color: #ec8a2e;
+.legend .micro {
+  color: purple;
 }
 
-.legend .empty {
-  color: #a0353a;
+.legend .pub {
+  color: red;
 }
 
-.legend .coming-soon {
-  color: #f4ba48;
+.legend .large {
+  color: blue;
 }
 
-.legend .healthy {
-  color: #1b904f;
+.legend .regional {
+  color:orange;
 }
 
-.legend .out-of-order {
-  color: #007dff;
+.legend .contract {
+  color: green;
 }

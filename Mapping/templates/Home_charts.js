@@ -107,7 +107,7 @@ d3.csv("../craft_barrels.csv", function (data) {
     var stackedData = d3.stack()
         .keys(keys)
         (data)
-    //console.log("This is the stack result: ", stackedData)
+    console.log("This is the stack result: ", stackedData)
 
     // Show the areas
     svg2

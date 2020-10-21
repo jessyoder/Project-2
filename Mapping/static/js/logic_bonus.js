@@ -19,8 +19,8 @@ var layers = {
 
 // Create the map object with layer options
 var myMap = L.map("map-id", {
-    center: [31.510735, -96.4247],
-    zoom: 8,
+    center: [38.510735, -96.4247],
+    zoom: 6,
     layers: [
         layers.micro,
         layers.pub,

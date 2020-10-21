@@ -1,5 +1,5 @@
 # Import libraries
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask_pymongo import pymongo
 
 # Create connection variable and pass to Pymongo
@@ -40,6 +40,27 @@ app = Flask(__name__)
 def index():
     locations = db.breweries_db.find()
     return render_template("index.html", locations=locations)
+
+
+@app.route("/api/data")
+def data():
+    locations1 = db.breweries_db.find()
+    print(locations1[100]["name"])
+    results = []
+    for loc in locations1:
+        obj = {
+            'name': loc["name"],
+            'brewery_type':  loc["brewery_type"],
+            'street': loc["street"],
+            'city': loc["city"],
+            'state': loc["state"],
+            'lat': loc["latitude"],
+            'long': loc["longitude"]
+        }
+        results.append(obj)
+
+    # return 'Hello'
+    return jsonify(results)
 
 
 @app.route("/state")

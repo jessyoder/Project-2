@@ -58,10 +58,12 @@ def data():
                 'long': loc["longitude"]
             }
             results.append(obj)
-            print(obj)
+            # print(obj)
 
     # return 'Hello'
     return jsonify(results)
+
+@app.route("/api/data1")
 
 
 @app.route("/state")

@@ -45,7 +45,6 @@ def index():
 @app.route("/api/data")
 def data():
     locations1 = db.breweries_db.find()
-    print(locations1[100]["name"])
     results = []
     for loc in locations1:
         obj = {

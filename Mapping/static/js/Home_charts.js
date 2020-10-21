@@ -16,13 +16,11 @@ var svg1 = d3.select("#my_dataviz1")
         "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("../../../production_merged1.csv", function (data) {
+d3.csv("production_merged1.csv", function (data) {
 
 
     // List of groups = header of the csv files
     var keys = data.columns.slice(1)
-
-    console.log(keys);
 
     // Add X axis
     var x = d3.scaleLinear()
@@ -78,13 +76,11 @@ var svg2 = d3.select("#my_dataviz2")
         "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("../../../craft_barrels.csv", function (data) {
+d3.csv("craft_barrels.csv", function (data) {
 
 
     // List of groups = header of the csv files
     var keys = data.columns.slice(1)
-
-    console.log(keys);
 
     // Add X axis
     var x = d3.scaleLinear()
@@ -140,14 +136,11 @@ var svg3 = d3.select("#my_dataviz3")
         "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("../../../craft_numbers.csv", function (data) {
+d3.csv("craft_numbers.csv", function (data) {
 
 
     // List of groups = header of the csv files
     var keys = data.columns.slice(1)
-
-    console.log(keys);
-
 
     // Add X axis
     var x = d3.scaleLinear()
@@ -190,3 +183,4 @@ d3.csv("../../../craft_numbers.csv", function (data) {
         )
 
 })
+

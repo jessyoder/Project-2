@@ -94,7 +94,7 @@ var icons = {
   };
 
 // Perform an API call to the JSON file
-d3.json("static/data/nc_breweries.json", function(brewInfo) {
+d3.json("/api/data", function(brewInfo) {
     var breweryInfo = brewInfo
     // console.log(breweryInfo);
 
@@ -139,7 +139,7 @@ d3.json("static/data/nc_breweries.json", function(brewInfo) {
         breweryCount[brewStatusCode]++;
         
         // Create a new marker with the appropriate icon and coordinates
-        var newMarker = L.marker([brewery.latitude, brewery.longitude], {
+        var newMarker = L.marker([parseFloat(brewery.lat), parseFloat(brewery.long)], {
             icon: icons[brewStatusCode]
         });
 

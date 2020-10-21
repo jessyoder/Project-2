@@ -6,7 +6,7 @@
 ## Basic Project Deliverables
 * Analysis of US beer production trends for the last 10-years, looking at overall production, the number of breweries, and production by brewery size
 * Analysis of microbreweries by state
-* Interactive mapping function displaying location states' microbreweries; initially, we limited our map to North Carolina but expanded functionality to the continental states.
+* Interactive mapping function displaying location states' microbreweries; initially, we limited our map to North Carolina but plan to expand functionality to the continental states.
 
 ## Primary Datasets and Datasources:
 * US Dept of the Treasury -- Alcohol and Tobacco Tax and Trade Bureau

@@ -67,7 +67,7 @@ var icons = {
       markerColor: "purple",
       shape: "circle"
     }),
-    // brewpub: L.ExtraMarkers.icon({
+    brewpub: L.ExtraMarkers.icon({
       icon: "ion-minus-circled",
       iconColor: "white",
       markerColor: "red",

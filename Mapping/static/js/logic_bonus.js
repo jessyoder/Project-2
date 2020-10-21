@@ -19,8 +19,8 @@ var layers = {
 
 // Create the map object with layer options
 var myMap = L.map("map-id", {
-    center: [35.227085, -80.4744444],
-    zoom: 8,
+    center: [38.510735, -96.4247],
+    zoom: 6,
     layers: [
         layers.micro,
         layers.pub,
@@ -94,7 +94,7 @@ var icons = {
   };
 
 // Perform an API call to the JSON file
-d3.json("static/data/nc_breweries.json", function(brewInfo) {
+d3.json("/api/data", function(brewInfo) {
     var breweryInfo = brewInfo
 
     var breweryCount = {

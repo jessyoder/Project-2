@@ -19,8 +19,8 @@ var layers = {
 
 // Create the map object with layer options
 var myMap = L.map("map-id", {
-    center: [38.510735, -96.4247],
-    zoom: 6,
+    center: [35.227085, -80.4744444],
+    zoom: 8,
     layers: [
         layers.micro,
         layers.pub,
@@ -94,8 +94,9 @@ var icons = {
   };
 
 // Perform an API call to the JSON file
-d3.json("/api/data", function(brewInfo) {
+d3.json("static/data/nc_breweries.json", function(brewInfo) {
     var breweryInfo = brewInfo
+    // console.log(breweryInfo);
 
     var breweryCount = {
         micro: 0,
@@ -108,32 +109,32 @@ d3.json("/api/data", function(brewInfo) {
     // Initialize brewStatusCode, which will be used as a key to access the appropriate layers, icons, and station count for layer group
     var brewStatusCode;
 
-    // Loop through the stations (they're the same size and have partially matching data)
+    // Loop through the breweries (they're the same size and have partially matching data)
     for (var i = 0; i < breweryInfo.length; i++) {
 
-        // Create a new station object with properties of both station objects
-        var brewery = Object.assign({}, breweryInfo[i]);
-        // If a brewery has a brewery_type of micro, its status is micro
-        if (brewery.brewery_type == "micro") {
-            brewStatusCode = "micro";
-        }
-        // If a brewery has a brewery_type of pub, its status is pub
-        else if (brewery.brewery_type == "pub") {
-            brewStatusCode = "pub";
-        }
-        // If a brewery has a brewery_type of large, its status is large
-        else if (brewery.brewery_type == "large") {
-            brewStatusCode = "large";
-        }
-        // If a brewery has a brewery_type of regional, its status is regional
-        else if (brewery.brewery_type == "regional") {
-            brewStatusCode = "regional";
-        }
-        // Otherwise the station is contract
-        else {
-            brewStatusCode = "contract";
-        }
-
+          // Create a new breweries object with properties of both station objects
+          var brewery = Object.assign({}, breweryInfo[i]);
+          // If a brewery has a brewery_type of micro, its status is micro
+          if (brewery.brewery_type == "micro") {
+              brewStatusCode = "micro";
+          }
+          // If a brewery has a brewery_type of pub, its status is pub
+          else if (brewery.brewery_type == "pub") {
+              brewStatusCode = "pub";
+          }
+          // If a brewery has a brewery_type of large, its status is large
+          else if (brewery.brewery_type == "large") {
+              brewStatusCode = "large";
+          }
+          // If a brewery has a brewery_type of regional, its status is regional
+          else if (brewery.brewery_type == "regional") {
+              brewStatusCode = "regional";
+          }
+          // Otherwise the station is contract
+          else {
+              brewStatusCode = "contract";
+          }
+        
         // Update the brewery count
         breweryCount[brewStatusCode]++;
         

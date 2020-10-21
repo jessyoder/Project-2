@@ -11,7 +11,7 @@ var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}
 // Initialize all of the LayerGroups
 var layers = {
     micro: new L.LayerGroup(),
-    pub: new L.LayerGroup(),
+    brewpub: new L.LayerGroup(),
     large: new L.LayerGroup(),
     regional: new L.LayerGroup(),
     contract: new L.LayerGroup()
@@ -19,11 +19,11 @@ var layers = {
 
 // Create the map object with layer options
 var myMap = L.map("map-id", {
-    center: [35.227085, -80.4744444],
-    zoom: 8,
+    center: [40.813618, -96.4247],
+    zoom: 6,
     layers: [
         layers.micro,
-        layers.pub,
+        layers.brewpub,
         layers.large,
         layers.regional,
         layers.contract
@@ -35,7 +35,7 @@ streetmap.addTo(myMap);
 
 var overlays = {
     "Micro Breweries": layers.micro,
-    "Brew Pubs": layers.pub,
+    "Brew Pubs": layers.brewpub,
     "Large Breweries": layers.large,
     "Regional Breweries": layers.regional,
     "Contract Breweries": layers.contract
@@ -67,7 +67,7 @@ var icons = {
       markerColor: "purple",
       shape: "circle"
     }),
-    pub: L.ExtraMarkers.icon({
+    brewpub: L.ExtraMarkers.icon({
       icon: "ion-minus-circled",
       iconColor: "white",
       markerColor: "red",
@@ -100,7 +100,7 @@ d3.json("/api/data", function(brewInfo) {
 
     var breweryCount = {
         micro: 0,
-        pub: 0,
+        brewpub: 0,
         large: 0,
         regional: 0,
         contract: 0
@@ -118,9 +118,9 @@ d3.json("/api/data", function(brewInfo) {
           if (brewery.brewery_type == "micro") {
               brewStatusCode = "micro";
           }
-          // If a brewery has a brewery_type of pub, its status is pub
-          else if (brewery.brewery_type == "pub") {
-              brewStatusCode = "pub";
+          // If a brewery has a brewery_type of brewpub, its status is brewpub
+          else if (brewery.brewery_type == "brewpub") {
+              brewStatusCode = "brewpub";
           }
           // If a brewery has a brewery_type of large, its status is large
           else if (brewery.brewery_type == "large") {
@@ -139,7 +139,7 @@ d3.json("/api/data", function(brewInfo) {
         breweryCount[brewStatusCode]++;
         
         // Create a new marker with the appropriate icon and coordinates
-        var newMarker = L.marker([parseFloat(brewery.lat), parseFloat(brewery.long)], {
+        var newMarker = L.marker([parseFloat(brewery["lat"]), parseFloat(brewery["long"])], {
             icon: icons[brewStatusCode]
         });
 
@@ -161,7 +161,7 @@ d3.json("/api/data", function(brewInfo) {
     function updateLegend(time, stationCount) {
         document.querySelector(".legend").innerHTML = [
         "<p class='micro'>Micro Breweries: " + breweryCount.micro + "</p>",
-        "<p class='pub'>Pub Breweries: " + breweryCount.pub + "</p>",
+        "<p class='brewpub'>Pub Breweries: " + breweryCount.brewpub + "</p>",
         "<p class='large'>Large Breweries: " + breweryCount.large + "</p>",
         "<p class='regional'>Regional Breweries: " + breweryCount.regional + "</p>",
         "<p class='contract'>Contract Breweries: " + breweryCount.contract + "</p>"

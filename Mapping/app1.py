@@ -36,7 +36,7 @@ app = Flask(__name__)
 # Flask Routes
 #################################################
 
-@app.route("/index")
+@app.route("/")
 def index():
     locations = db.breweries_db.find()
     return render_template("index.html", locations=locations)

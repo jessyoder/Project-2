@@ -67,7 +67,7 @@ var icons = {
       markerColor: "purple",
       shape: "circle"
     }),
-    brewpub: L.ExtraMarkers.icon({
+    // brewpub: L.ExtraMarkers.icon({
       icon: "ion-minus-circled",
       iconColor: "white",
       markerColor: "red",
@@ -161,10 +161,10 @@ d3.json("/api/data", function(brewInfo) {
     function updateLegend(time, stationCount) {
         document.querySelector(".legend").innerHTML = [
         "<p class='micro'>Micro Breweries: " + breweryCount.micro + "</p>",
-        "<p class='brewpub'>Pub Breweries: " + breweryCount.brewpub + "</p>",
         "<p class='large'>Large Breweries: " + breweryCount.large + "</p>",
         "<p class='regional'>Regional Breweries: " + breweryCount.regional + "</p>",
-        "<p class='contract'>Contract Breweries: " + breweryCount.contract + "</p>"
+        "<p class='contract'>Contract Breweries: " + breweryCount.contract + "</p>",
+        "<p class='brewpub'>Pub Breweries: " + breweryCount.brewpub + "</p>"
         ].join("");
     }
 });

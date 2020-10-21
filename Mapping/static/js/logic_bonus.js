@@ -151,7 +151,7 @@ d3.json("/api/data", function(brewInfo) {
         }
 
         // Bind a popup to the marker that will  display on click. This will be rendered as HTML
-        newMarker.bindPopup("<h3>" + brewery.name + "</h3><hr><h4>" + brewery.street +", " + brewery.city + "</h4><h4>" + capitalize(brewery.brewery_type) + " Brewery</h4>");
+        newMarker.bindPopup("<h4>" + brewery.name + "</h4><hr><h5>" + brewery.street +", " + brewery.city + " " + brewery.state + "</h5><h5>" + capitalize(brewery.brewery_type) + " Brewery</h5>");
     }
     
     // Call the updateLegend function, which will... update the legend!
@@ -161,10 +161,10 @@ d3.json("/api/data", function(brewInfo) {
     function updateLegend(time, stationCount) {
         document.querySelector(".legend").innerHTML = [
         "<p class='micro'>Micro Breweries: " + breweryCount.micro + "</p>",
+        "<p class='brewpub'>Pub Breweries: " + breweryCount.brewpub + "</p>",
         "<p class='large'>Large Breweries: " + breweryCount.large + "</p>",
         "<p class='regional'>Regional Breweries: " + breweryCount.regional + "</p>",
         "<p class='contract'>Contract Breweries: " + breweryCount.contract + "</p>",
-        "<p class='brewpub'>Pub Breweries: " + breweryCount.brewpub + "</p>"
         ].join("");
     }
 });

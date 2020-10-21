@@ -23,7 +23,7 @@ function createMap(breweries) {
     // Create the map object with options
     var myMap = L.map("map-id", {
         center: [35.227085, -80.4744444],
-        zoom: 8,
+        zoom: 5,
         layers: [streetmap, breweries]
     });
 

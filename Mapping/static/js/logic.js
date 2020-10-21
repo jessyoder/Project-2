@@ -22,8 +22,8 @@ function createMap(breweries) {
 
   // Create the map object with options
   var myMap = L.map("map-id", {
-    center: [31.510735, -96.4247],
-    zoom: 8,
+    center: [38.510735, -96.4247],
+    zoom: 6,
     layers: [streetmap, breweries]
   });
 
@@ -37,6 +37,7 @@ function createMarkers(data) {
 
   // Pull the breweries data out of the response
   var breweries = data;
+  // console.log(breweries)
 
   // Initialize an array to hold bike markers
   var breweryMarkers = [];

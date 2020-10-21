@@ -11,7 +11,7 @@ var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}
 // Initialize all of the LayerGroups
 var layers = {
     micro: new L.LayerGroup(),
-    pub: new L.LayerGroup(),
+    brewpub: new L.LayerGroup(),
     large: new L.LayerGroup(),
     regional: new L.LayerGroup(),
     contract: new L.LayerGroup()
@@ -19,11 +19,11 @@ var layers = {
 
 // Create the map object with layer options
 var myMap = L.map("map-id", {
-    center: [31.510735, -96.4247],
-    zoom: 8,
+    center: [40.813618, -96.4247],
+    zoom: 6,
     layers: [
         layers.micro,
-        layers.pub,
+        layers.brewpub,
         layers.large,
         layers.regional,
         layers.contract
@@ -35,7 +35,7 @@ streetmap.addTo(myMap);
 
 var overlays = {
     "Micro Breweries": layers.micro,
-    "Brew Pubs": layers.pub,
+    "Brew Pubs": layers.brewpub,
     "Large Breweries": layers.large,
     "Regional Breweries": layers.regional,
     "Contract Breweries": layers.contract
@@ -67,7 +67,7 @@ var icons = {
       markerColor: "purple",
       shape: "circle"
     }),
-    pub: L.ExtraMarkers.icon({
+    brewpub: L.ExtraMarkers.icon({
       icon: "ion-minus-circled",
       iconColor: "white",
       markerColor: "red",
@@ -96,10 +96,11 @@ var icons = {
 // Perform an API call to the JSON file
 d3.json("/api/data", function(brewInfo) {
     var breweryInfo = brewInfo
+    // console.log(breweryInfo);
 
     var breweryCount = {
         micro: 0,
-        pub: 0,
+        brewpub: 0,
         large: 0,
         regional: 0,
         contract: 0
@@ -108,37 +109,37 @@ d3.json("/api/data", function(brewInfo) {
     // Initialize brewStatusCode, which will be used as a key to access the appropriate layers, icons, and station count for layer group
     var brewStatusCode;
 
-    // Loop through the stations (they're the same size and have partially matching data)
+    // Loop through the breweries (they're the same size and have partially matching data)
     for (var i = 0; i < breweryInfo.length; i++) {
 
-        // Create a new station object with properties of both station objects
-        var brewery = Object.assign({}, breweryInfo[i]);
-        // If a brewery has a brewery_type of micro, its status is micro
-        if (brewery.brewery_type == "micro") {
-            brewStatusCode = "micro";
-        }
-        // If a brewery has a brewery_type of pub, its status is pub
-        else if (brewery.brewery_type == "pub") {
-            brewStatusCode = "pub";
-        }
-        // If a brewery has a brewery_type of large, its status is large
-        else if (brewery.brewery_type == "large") {
-            brewStatusCode = "large";
-        }
-        // If a brewery has a brewery_type of regional, its status is regional
-        else if (brewery.brewery_type == "regional") {
-            brewStatusCode = "regional";
-        }
-        // Otherwise the station is contract
-        else {
-            brewStatusCode = "contract";
-        }
-
+          // Create a new breweries object with properties of both station objects
+          var brewery = Object.assign({}, breweryInfo[i]);
+          // If a brewery has a brewery_type of micro, its status is micro
+          if (brewery.brewery_type == "micro") {
+              brewStatusCode = "micro";
+          }
+          // If a brewery has a brewery_type of brewpub, its status is brewpub
+          else if (brewery.brewery_type == "brewpub") {
+              brewStatusCode = "brewpub";
+          }
+          // If a brewery has a brewery_type of large, its status is large
+          else if (brewery.brewery_type == "large") {
+              brewStatusCode = "large";
+          }
+          // If a brewery has a brewery_type of regional, its status is regional
+          else if (brewery.brewery_type == "regional") {
+              brewStatusCode = "regional";
+          }
+          // Otherwise the station is contract
+          else {
+              brewStatusCode = "contract";
+          }
+        
         // Update the brewery count
         breweryCount[brewStatusCode]++;
         
         // Create a new marker with the appropriate icon and coordinates
-        var newMarker = L.marker([brewery.latitude, brewery.longitude], {
+        var newMarker = L.marker([parseFloat(brewery["lat"]), parseFloat(brewery["long"])], {
             icon: icons[brewStatusCode]
         });
 
@@ -150,7 +151,7 @@ d3.json("/api/data", function(brewInfo) {
         }
 
         // Bind a popup to the marker that will  display on click. This will be rendered as HTML
-        newMarker.bindPopup("<h3>" + brewery.name + "</h3><hr><h4>" + brewery.street +", " + brewery.city + "</h4><h4>" + capitalize(brewery.brewery_type) + " Brewery</h4>");
+        newMarker.bindPopup("<h4>" + brewery.name + "</h4><hr><h5>" + brewery.street +", " + brewery.city + " " + brewery.state + "</h5><h5>" + capitalize(brewery.brewery_type) + " Brewery</h5>");
     }
     
     // Call the updateLegend function, which will... update the legend!
@@ -160,10 +161,10 @@ d3.json("/api/data", function(brewInfo) {
     function updateLegend(time, stationCount) {
         document.querySelector(".legend").innerHTML = [
         "<p class='micro'>Micro Breweries: " + breweryCount.micro + "</p>",
-        "<p class='pub'>Pub Breweries: " + breweryCount.pub + "</p>",
+        "<p class='brewpub'>Pub Breweries: " + breweryCount.brewpub + "</p>",
         "<p class='large'>Large Breweries: " + breweryCount.large + "</p>",
         "<p class='regional'>Regional Breweries: " + breweryCount.regional + "</p>",
-        "<p class='contract'>Contract Breweries: " + breweryCount.contract + "</p>"
+        "<p class='contract'>Contract Breweries: " + breweryCount.contract + "</p>",
         ].join("");
     }
 });

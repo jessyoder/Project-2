@@ -45,19 +45,20 @@ def index():
 @app.route("/api/data")
 def data():
     locations1 = db.breweries_db.find()
-    print(locations1[100]["name"])
     results = []
     for loc in locations1:
-        obj = {
-            'name': loc["name"],
-            'brewery_type':  loc["brewery_type"],
-            'street': loc["street"],
-            'city': loc["city"],
-            'state': loc["state"],
-            'lat': loc["latitude"],
-            'long': loc["longitude"]
-        }
-        results.append(obj)
+        if loc["latitude"] != "":
+            obj = {
+                'name': loc["name"],
+                'brewery_type':  loc["brewery_type"],
+                'street': loc["street"],
+                'city': loc["city"],
+                'state': loc["state"],
+                'lat': loc["latitude"],
+                'long': loc["longitude"]
+            }
+            results.append(obj)
+            print(obj)
 
     # return 'Hello'
     return jsonify(results)

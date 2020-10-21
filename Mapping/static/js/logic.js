@@ -37,6 +37,7 @@ function createMarkers(data) {
 
   // Pull the breweries data out of the response
   var breweries = data;
+  // console.log(breweries)
 
   // Initialize an array to hold bike markers
   var breweryMarkers = [];

@@ -1,13 +1,14 @@
 function createMap(breweries) {
 
+
   // Create the tile layer that will be the background of our map
   var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
-  attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
-  tileSize: 512,
-  maxZoom: 18,
-  zoomOffset: -1,
-  id: "mapbox/streets-v11",
-  accessToken: API_KEY
+    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+    tileSize: 512,
+    maxZoom: 18,
+    zoomOffset: -1,
+    id: "mapbox/streets-v11",
+    accessToken: API_KEY
   });
 
   // Create a baseMaps object to hold the lightmap layer
@@ -50,8 +51,8 @@ function createMarkers(data) {
     }
 
     // For each station, create a marker and bind a popup with the station's name
-    var breweryMarker = L.marker([brewery.latitude, brewery.longitude])
-      .bindPopup("<h2>" + brewery.name + "</h2><hr><h3>" + brewery.street + ", " + brewery.city + "</h3><h3> " + capitalize(brewery.brewery_type) +  " Brewery</h3>");
+    var breweryMarker = L.marker([parseInt(brewery.latitude), parseInt(brewery.longitude)])
+      .bindPopup("<h2>" + brewery.name + "</h2><hr><h3>" + brewery.street + ", " + brewery.city + "</h3><h3> " + capitalize(brewery.brewery_type) + " Brewery</h3>");
 
     // Add the marker to the bikeMarkers array
     console.log(breweryMarkers)

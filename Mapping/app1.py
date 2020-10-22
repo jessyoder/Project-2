@@ -1,5 +1,5 @@
 # Import libraries
-from flask import Flask, render_template, jsonify
+from flask import(Flask, render_template, jsonify)
 from flask_pymongo import pymongo
 
 # Create connection variable and pass to Pymongo

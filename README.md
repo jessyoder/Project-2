@@ -1,7 +1,5 @@
 # Project-2
 
-# Project-2
-
 ## Project Objective
 * Our team will review trends in US beer production over the last 10 years and rise of microbreweries or craft breweries
 
@@ -58,3 +56,4 @@
     * Mapbox plot of breweries in NC
     * Clickable popups of breweries in NC with selected information - Name, city, state and type of brewery - data from Openbrewerydb site on github
     * Initial focus on North Carolina, but eventually expanded to national directory
+

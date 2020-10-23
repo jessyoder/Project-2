@@ -6,7 +6,7 @@
 ## Basic Project Deliverables
 * Analysis of US beer production trends for the last 10-years, looking at overall production, the number of breweries, and production by brewery size
 * Analysis of microbreweries by state
-* Interactive mapping function displaying location states' microbreweries; initially, we limited our map to North Carolina but plan to expand functionality to the continental states.
+* Interactive mapping function displaying location states' microbreweries; initially, we limited our map to North Carolina but expanded functionality to the entire United States.
 
 ## Primary Datasets and Datasources:
 * US Dept of the Treasury -- Alcohol and Tobacco Tax and Trade Bureau
@@ -26,7 +26,7 @@
     * Scraped state level data using Python and Beautiful Soup
     * Cleaned and joined data into state level database
 * Database:
-    * Developed data tables for national level data using SQL.
+    * Developed data tables for 10-year national level data using SQL.
         * Cleaned and joined key fields into single national database
     * Developed data tables for state level data using Mongo.
     * Utilized flask to read in data for Plotly and Leaflet.

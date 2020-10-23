@@ -1,7 +1,8 @@
 // set the dimensions and margins of the graph
 var margin = { top: 20, right: 30, bottom: 30, left: 55 },
-    width = 1060 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 600 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
 
 
 // Chart 1 - Total US Beer Production by Size of Brewery
@@ -23,6 +24,7 @@ d3.csv("../../../production_merged1.csv", function (data) {
     var keys = data.columns.slice(1)
 
     console.log(keys);
+
 
     // Add X axis
     var x = d3.scaleLinear()

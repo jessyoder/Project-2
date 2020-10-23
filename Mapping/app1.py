@@ -1,5 +1,5 @@
 # Import libraries
-from flask import Flask, render_template, jsonify
+from flask import(Flask, render_template, jsonify)
 from flask_pymongo import pymongo
 
 # Create connection variable and pass to Pymongo
@@ -58,10 +58,12 @@ def data():
                 'long': loc["longitude"]
             }
             results.append(obj)
-            print(obj)
+            # print(obj)
 
     # return 'Hello'
     return jsonify(results)
+
+@app.route("/api/data1")
 
 
 @app.route("/state")

@@ -8,6 +8,10 @@ var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}
   accessToken: API_KEY
   });
 
+var basemaps = {
+  streetmap: streetmap
+}
+
 // Initialize all of the LayerGroups
 var layers = {
     micro: new L.LayerGroup(),
@@ -17,16 +21,19 @@ var layers = {
     contract: new L.LayerGroup()
   };
 
+if (myMap != undefined) myMap.remove();
+
 // Create the map object with layer options
 var myMap = L.map("map-id", {
     center: [40.813618, -96.4247],
     zoom: 6,
     layers: [
-        layers.micro,
-        layers.brewpub,
-        layers.large,
-        layers.regional,
-        layers.contract
+      streetmap
+        // layers.micro,
+        // layers.brewpub,
+        // layers.large,
+        // layers.regional,
+        // layers.contract
     ]
   });
 

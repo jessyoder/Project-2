@@ -5,8 +5,8 @@
 
 ## Basic Project Deliverables
 * Analysis of US beer production trends for the last 10-years, looking at overall production, the number of breweries, and production by brewery size
-* Analysis of microbreweries by state
-* Interactive mapping function displaying location states' microbreweries; initially, we limited our map to North Carolina but expanded functionality to the entire United States.
+* Analysis of microbreweries by state, including top 10 states and lowest 10 states.
+* Interactive mapping function displaying markers at the location of the states' microbreweries - names, locations and types; initially, we limited our map to North Carolina (logic_nc.js - can be read with local data using live server) but later expanded functionality to the entire United States (logic_bonus.js).
 
 ## Primary Datasets and Datasources:
 * US Dept of the Treasury -- Alcohol and Tobacco Tax and Trade Bureau
@@ -22,13 +22,15 @@
 
 ## Project Architectures		
 * Data gathering and storage:
-    * Downloaded national production data by year as separate CSV files
+    * Downloaded 10-year national production data by year as separate CSV files
     * Scraped state level data using Python and Beautiful Soup
     * Cleaned and joined data into state level database
 * Database:
     * Developed data tables for 10-year national level data using SQL.
         * Cleaned and joined key fields into single national database
+        * Joined key fields into specific databases for charts based on breweries, barrels produced and barrels sold.
     * Developed data tables for state level data using Mongo.
+        * Used Mongo to collect and organize state-level data for the breweries map JSONs.
     * Utilized flask to read in data for Plotly and Leaflet.
 * Website:
     * Deploy information to website using Python / Flask API
@@ -52,6 +54,6 @@
     * All data scraped form Brewers Association
 * State Level Directory
     * Mapbox plot of breweries in NC
-    * List of breweries in NC with selected information - Name, city and type of brewery - data from Openbrewerydb site on github
-    * Initial focus on North Carolina, but time permitting expanded to national directory
+    * Clickable popups of breweries in NC with selected information - Name, city, state and type of brewery - data from Openbrewerydb site on github
+    * Initial focus on North Carolina, but eventually expanded to national directory
 

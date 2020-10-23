@@ -19,6 +19,6 @@ var svg1 = d3.select("#my_dataviz1")
 d3.json("/api/data1", function (data) {
 
     console.log("Hello")
-    console.log(data.Chart1)
+    //console.log(data.Chart1)
 
 });

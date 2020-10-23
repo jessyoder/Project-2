@@ -71,12 +71,15 @@ def data1():
     production = db.production_db.find()
     craftbarrels = db.craftbarrels_db.find()
     brewnum = db.brewnum_db.find()
+    statedata = db.statedata_db.find()
 
     chart1 = []
     chart2 = []
     chart3 = []
+    chart4 = []
 
-    chartdata = [{"Chart1": chart1}, {"Chart2": chart2}, {"Chart3": chart3}]
+    chartdata = [{"Chart1": chart1}, {"Chart2": chart2},
+                 {"Chart3": chart3}, {"Chart4": chart4}]
 
     for item in production:
         obj = {
@@ -121,6 +124,15 @@ def data1():
             "<1M bbls": float(item["1 to 1,000 Barrels"])
         }
         chart3.append(obj)
+
+    for item in statedata:
+        obj = {
+            "State": item["States"],
+            "# Breweries": item["# Breweries"],
+            "Breweries per Capita": item["Breweries Per Capita"],
+            "Barrels": item["Barrels"]
+        }
+        chart4.append(obj)
 
     return jsonify(chartdata)
 

@@ -7,6 +7,8 @@
 * The "Mapping Folder" is the primary folder containg our Python file ("app1.py") and the associated html and javascript files stored in the "templates" and "static" folder
 * Two Jupyter Notebook programs were also used to scrape and load data.  "craft_breweries_scrape" scraped some of our data and in the case of our national brewbpub database ("breweries_db"), loaded into Mongo.  "mongo_load" loaded all of the other required CSV files into Mongo.  Those are located in the main folder  
 * Raw and re-formatted data sources, all of which are CSV files, are saved in the main folder
+* Final presentation "Craft Brewery2.pptx" saved in main folder
+* Original proposal "Project-2 Proposal.docx" saved in main folder
 
 ## Project Objective
 * Review trends in US beer production over the last 10 years and the rise of microbreweries or craft breweries.  Have craft beers really increased in popularity, or have changes in US consumption away from beer affected the craft beer industry as well.

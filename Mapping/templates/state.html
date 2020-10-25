@@ -6,15 +6,9 @@
         <title>Beer USA</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
             integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-        <!-- <style>
-            body {
-                background: url("../clear-blue-sky-2.jpg");
-                background-size: cover;
-                background-blend-mode: lighten;
-            }
-        </style>
-    -->
 
     </head>
 
@@ -49,26 +43,27 @@
                 <div class="row mt-3 mb-3">
                     <div class="col-md-12">
                         <h5>State Craft BreweryTrends</h5>
-                        <p>Insert commentary.</p>
-                        <p>List source data.</p>
+                        <p>There are six states that have large Craft Brewery industries, each with over 400
+                            Microberweries, Brewpubs, Taprooms, and Contract Breweries -- California, Colorado, New
+                            York, Washington, Pennsylvania, and Michigan. Those states also tend to be among the largest
+                            as measured by Craft Barrels produced, although some states such as North Carolina, Florida,
+                            and Ohio also rank high by barrels produced.</p>
+                        <p>On a per Capita basis, less populated, rural states such as Maine, Montana, and Vermont, are
+                            highly ranked also indicating a strong Craft Brewery culture in those states.</p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4">
-                        <h6>Number Craft Breweries by State</h6>
-                        <p>INSERT CHART HERE</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h6>Per Capita Craft Breweries by State</h6>
-                        <p>INSERT CHART HERE</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h6>Craft Barrels Produced by State</h6>
-                        <p>INSERT CHART HERE</p>
-                    </div>
+                    <div id="statechart1" class="col-md-12"></div>
                 </div>
 
+                <div class="row">
+                    <div id="statechart2" class="col-md-12"></div>
+                </div>
+
+                <div class="row">
+                    <div id="statechart3" class="col-md-12"></div>
+                </div>
 
             </div>
 
@@ -85,7 +80,10 @@
             crossorigin="anonymous"></script>
 
 
-        <!-- ADD REFERENCE TO D3 AND CLOUDFARE -->
-        <!-- ADD JAVASCRIPT SOURCE FILE-->
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v4.js"></script>
+
+        <!-- Load javascript -->
+        <script src="{{ url_for('static', filename='js/states.js') }}"></script>
 
     </body>

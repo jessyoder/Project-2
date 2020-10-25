@@ -16,24 +16,24 @@ var margin = { top: 20, right: 30, bottom: 30, left: 55 },
 //         "translate(" + margin.left + "," + margin.top + ")");
 
 // //Read the data from the JSON file
-// d3.json("/api/data1", function (data) {
+d3.json("/api/data1", function (data) {
 
-//     console.log("Hello");
-//     console.log(data[0]);
-//     console.log(data[0].Chart1)
+    console.log("Hello");
+    console.log(data[0]);
+    console.log(data[0].Chart1)
 
-//     var chartdata = data[0].Chart1
+    var chartdata = data[0].Chart1
 
-//     // for (var i = 0; i < chartdata.length; i++) {
-//     //     if (i = 0) {
-//     //         labels = Object.keys(chartdata)
-//     //         values 
-//     //         console.log(labels)
-//     //     }
+    // for (var i = 0; i < chartdata.length; i++) {
+    //     if (i = 0) {
+    //         labels = Object.keys(chartdata)
+    //         values 
+    //         console.log(labels)
+    //     }
 
-//     // };
+    // };
 
-// });
+});
 
 // console.log(chartdata.map)
 

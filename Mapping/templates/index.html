@@ -6,9 +6,9 @@
         <title>Beer USA</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
             integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-
-        <script src="{{ url_for('static', filename='js/index_charts.js') }}"></script>
 
     </head>
 
@@ -43,62 +43,44 @@
                 <div class="row ml-3 mt-3 mb-3">
                     <div class="col-md-12">
                         <h5>National Beer Production and Consumption Trends</h5>
-                        <p>Overview of national tends.</p>
-                        <p>Other info.</p>
-                        <p>List source data.</p>
                     </div>
                 </div>
 
-                <div class="row ml-3">
-                    <div id="my_dataviz1" class="col-md-8">
-                        <h6>National Beer Production Trends -- Total Barrels Produced</h6>
-                    </div>
+                <div class="row ml-3 mt-6">
+                    <div id="my_dataviz1" class="col-md-8"></div>
                     <div class="col-md-4">
                         <h6>National Beer Production -- All Breweries</h6>
                         <p>Over the last 10 years, US beer production has declined from 195MM bbls annually to 179MM
                             bbls annually as consumer tastes have shifted, primarily to wines and spirits.</p>
-                        <p>The large, national breweries, definied as producing 6MM or more barrels annually, have
-                            accounted for all of this decline and have lost additional market share to smaller craft
-                            breweries producing under 6MM bbls.</p>
+                        <p>The large, national breweries, defined as producing 6MM or more barrels annually, have
+                            accounted for all of this decline, with production declining 35MM bbls during this period,
+                            losing market share to smaller craft breweries producing under 6MM bbls.</p>
 
                     </div>
                 </div>
                 <div class="row ml-3">
-                    <div id="my_dataviz2" class="col-md-8">
-                        <h6>Growth in Craft Breweeries -- Craft Barrels Produced by Year</h6>
-                    </div>
+                    <div id="my_dataviz2" class="col-md-8"></div>
                     <div class="col-md-4">
                         <h6>Craft Beer Production</h6>
-                        <p>While nationral breweries have seedn production decline by nearly 35MM bbls, smaller craft
-                            breweries have Nearly all of the declining production can be attributed to the declining
-                            volumes from larger
-                            breweries have seen production rise 19MM bbls in the last 10 years.</p>
+                        <p>Craft breweries have seen production grow by 19MM bbls during the same time period, with
+                            production increases fairly evenly split betwween larger craft breweries ((1-6MM bbls per
+                            year), which experienced production increases of 9MM bbls, and smaller craft breweries (less
+                            than 1MM bbls per annum), which experienced production increases of 10MM bbls.</p>
                         <p>While the grwoth in craft brewery production has tapered off, this segment is still seeing
-                            attractive growth of roughly 3.5% per year recently vs. declining total produciton of
+                            attractive growth of roughly 3.5% per year recently vs. declining total beer produciton of
                             roughly 1.5% per year.</p>
                     </div>
                 </div>
-                <div class="row ml-3">
-                    <div id="my_dataviz3" class="col-md-8">
-                        <h6>Growth in Craft Breweries -- Total Number by Type of Craft Breweries</h6>
-                    </div>
-                    <div class="col-md-4">
-                        <h6>Craft Brewery Segments</h6>
-                        <p>Define craft segments - Regional, Micro Brewery, Taproom, Brewpup</p>
-                    </div>
-                </div>
 
-                <div id="map-id"></div>
-
-                <div class="row ml-12">
+                <!-- NOTE:  The following was test code to confirm passage of data into server environment -->
+                <!-- <div class="row ml-12">
                     <ul style="list-style: none;">
                         {% for location in locations %}
                         <li>{{ location.name }}; {{ location.brewery_type }}; {{ location.state }};
                             {{ location.latitude }}; {{ location.longitude }}</li>
                         {% endfor %}
                     </ul>
-
-                </div>
+                </div> -->
 
             </div>
 

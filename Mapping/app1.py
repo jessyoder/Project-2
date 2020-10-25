@@ -84,17 +84,9 @@ def data1():
     for item in production:
         obj = {
             "Year": int(item["Year"]),
-            "6MM bbls and over": float(item["6,000,001 Barrels and Over"]),
-            "2-6MM bbls": float(item["2,000,000 to 6,000,000 Barrels"]),
-            "1-2MM bbls": float(item["1,000,001 to 1,999,999 Barrels"]),
-            "0.5-1MM bbls": float(item["500,001 to 1,000,000 Barrels"]),
-            "100-500M bbls": float(item["100,001 to 500,000 Barrels"]),
-            "60-100M bbls": float(item["60,001 to 100,000 Barrels"]),
-            "30-60M bbls": float(item["30,001 to 60,000 Barrels"]),
-            "15-30M bbls": float(item["15,001 to 30,000 Barrels"]),
-            "7.5-15M bbls": float(item["7,501 to 15,000 Barrels"]),
-            "1-7.5M bbls": float(item["1,001 to 7,500 Barrels"]),
-            "<1M bbls": float(item["1 to 1,000 Barrels"])
+            "6MM bbls and over": int(item["6,000,001 Barrels and Over"]),
+            "Total Craft": int(item["Total Craft"]),
+            "Total": int(item["Total"]),
         }
         chart1.append(obj)
 
